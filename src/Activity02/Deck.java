@@ -1,3 +1,5 @@
+package Activity02;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -30,12 +32,20 @@ public class Deck {
 	 * @param values is an array containing all of the card point values.
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
-		ArrayList temp = new ArrayList();
-                for(int i = 0; i < values.length; i++){
-                    Card plus = new Card(ranks[i], suits[i], values[i]);
+           
+            ArrayList temp = new ArrayList();
+            for(int sets = 0; sets < suits.length; sets++){
+            
+                for(int numCards = 0; numCards < ranks.length; numCards++){
+                    Card plus = new Card(ranks[numCards], suits[sets], values[numCards]);
                     temp.add(plus);
-                }
+                    
                 
+                }
+            }
+            cards = temp.toArray(Card);
+            size = cards.size();
+            shuffle();
 	}
 
 
@@ -44,7 +54,12 @@ public class Deck {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		if(size == 0){
+                    return true;
+                }
+                else{
+                    return false;
+                }
 	}
 
 	/**
@@ -53,7 +68,8 @@ public class Deck {
 	 */
 	public int size() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-	}
+                return this.size;
+        }
 
 	/**
 	 * Randomly permute the given collection of cards
@@ -69,7 +85,8 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+                size--;
+		return cards.get(size());
 	}
 
 	/**
