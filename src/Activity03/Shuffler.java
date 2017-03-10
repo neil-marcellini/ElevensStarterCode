@@ -1,3 +1,7 @@
+package Activity03;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -50,7 +54,23 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void perfectShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		//makes lists
+                int[] one = new int[(values.length / 2)];
+                int[] two = new int[(values.length / 2)];
+                for(int i = 0; i < values.length / 2; i++){
+                    one[i] = values[i];
+                    }
+                for(int i = 0; i < values.length / 2; i++){
+                    two[i] = values[i];
+                    }
+                
+                for(int i = 0; i < one.length; i+=2){
+                    values[i] = one[i];
+                }
+                for(int i = 1; i < one.length; i+=2){
+                    values[i] = two[i];
+                }
+                
 	}
 
 	/**
@@ -65,6 +85,16 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void selectionShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		ArrayList selected = new ArrayList();
+                ArrayList notSelected = new ArrayList();
+                for(int i = 0; i < values.length; i ++){
+                    notSelected.add(values[i]);
+                    }
+                while(selected.size() < values.length){
+                    int randomNum = ThreadLocalRandom.current().nextInt(0, notSelected.size());
+                    selected.add(notSelected.remove(randomNum));
+                    
+                }
+                
 	}
 }
